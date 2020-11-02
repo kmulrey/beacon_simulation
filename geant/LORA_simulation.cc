@@ -9,7 +9,6 @@
 #include "LORARunAction.hh"
 #include "LORAEventAction.hh"
 #include "LORASteppingAction.hh"
-#include "G4ParticleTable.hh"
 
 #include <iostream>
 #include <fstream>
@@ -17,60 +16,43 @@
 
 using namespace std;
 
-
-
 int main(int argc,char** argv)
 {
    // Construct the default run manager
    //
- 
-  G4RunManager* runManager = new G4RunManager;
+   G4RunManager* runManager = new G4RunManager;
    
    // set mandatory initialization classes
    //
- //  LORADetectorConstruction* detector = new LORADetectorConstruction;
-   // LORAPhysicsList* physics = new LORAPhysicsList;
-
-   //runManager->SetUserInitialization(detector);
-  // runManager->SetUserInitialization(physics);
-    
-    cout<<"done with initialization"<<endl;
-
+   LORADetectorConstruction* detector = new LORADetectorConstruction;
+   runManager->SetUserInitialization(detector);
+   //
+   G4VUserPhysicsList* physics = new LORAPhysicsList;
+   runManager->SetUserInitialization(physics);
 	
    // set mandatory user action class
    //
    cout << "1" << endl;
-   
-  //  G4ParticleTable* particleTable = G4ParticleTable::GetParticleTable();
-    
-   // static G4ParticleDefinition* particle
-   // = particleTable->FindParticle("mu-");
+   //LORAPrimaryGeneratorAction* gen_action = new LORAPrimaryGeneratorAction(false, 4.0*GeV);
+   LORAPrimaryGeneratorAction* gen_action = new LORAPrimaryGeneratorAction();
+   //LORAPrimaryGeneratorAction* gen_action;
 
-//particleTable->DumpTable();
-
-    
    cout << "2" << endl;
 
-    
-    // set user action classes
+   runManager->SetUserAction(gen_action);
+	
+	// set user action classes
 	LORARunAction*   run;
 	LORAEventAction* event;
-    LORAPrimaryGeneratorAction* gen_action = new LORAPrimaryGeneratorAction();
-
+	
 	runManager->SetUserAction(run = new LORARunAction(detector,gen_action)); 
 	runManager->SetUserAction(event = new LORAEventAction());
 	//runManager->SetUserAction(new VGCTrackingAction(gen_action,run,histo));
 	runManager->SetUserAction(new LORASteppingAction(run, event));
-    runManager->SetUserAction(new LORAPrimaryGeneratorAction());
-
    
    // Initialize G4 kernel
    //
-    
-    cout<<"before initialization"<<endl;
    runManager->Initialize();
-    
-
    
    // Get the pointer to the UI manager and set verbosities
    //
@@ -81,7 +63,7 @@ int main(int argc,char** argv)
 	UI->ApplyCommand("/event/verbose 0"); 
 	UI->ApplyCommand("/tracking/verbose 0");
    UI->ApplyCommand("/process/verbose 0");
- 
+   
 	if (argc==3)   // batch mode  
    {
       char* inFile = argv[1];
@@ -130,7 +112,7 @@ int main(int argc,char** argv)
             double inner = x*shower_axis_x + y*shower_axis_y;
             double AxisDist = sqrt(R2-inner*inner);
             int DistBin = AxisDist/500; // bin 0 = 0-5 m, bin 1 = 5-10m, etc.
-            double energy = sqrt(px*px+py*py+pz*pz)*CLHEP::GeV;
+            double energy = sqrt(px*px+py*py+pz*pz)*GeV;
             
             G4String nextParticle="ignore";
             if (id==1) {nextParticle="gamma";}
@@ -143,9 +125,10 @@ int main(int argc,char** argv)
             
             if (nextParticle!="ignore" && DistBin<nobins) {
                //cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
-               gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*CLHEP::GeV);
+               // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
+               gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
-               double Deposit = w*(event->GetEnergyDeposit());    
+               double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
                //G4cout << "Deposit: " << Deposit/w << " (weight=" << w << ")" << G4endl;
                DepositedEnergyTotal[DistBin]+=Deposit;
                   if (id==1) { DepositedEnergyGamma[DistBin]+=Deposit; }
@@ -163,6 +146,12 @@ int main(int argc,char** argv)
             //Correct particle density is achieved by applying a factor 2.25/A_ellipse
             //A "ring" is in fact an ellipse, which has Area A_ellipse=A_ring/cos(zenith)
             
+            // (AC): What is actually written out here??
+            // Deposited energy in MeV? Then the 2.25 cos theta / totalarea doesnt make sense?
+            // or energy density in MeV / m^2 ? It seems MeV / m^2, I would say, as then
+            // the area correction factor is right.
+            // The comparison is with LORA MeV in detector, however...
+             
             myfile << i << "     " << 2.25*cos(zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
                << "   " << int(100.*DepositedEnergyElecPosi[i]/DepositedEnergyTotal[i]) 
                << "   " << int(100.*DepositedEnergyMuons[i]/DepositedEnergyTotal[i])
@@ -173,10 +162,9 @@ int main(int argc,char** argv)
       }
 
    }
-     
- 
-    delete runManager;
-    cout<<"return"<<endl;
-   //return 0;
+
+   delete runManager;
+   
+   return 0;
 }
 
