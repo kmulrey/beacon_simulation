@@ -1,0 +1,73 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXFileReference section */
+		4105DCCD25502CC00029FAE1 /* geant */ = {isa = PBXFileReference; lastKnownFileType = folder; path = geant; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		4105DCC625502B230029FAE1 = {
+			isa = PBXGroup;
+			children = (
+				4105DCCD25502CC00029FAE1 /* geant */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		4105DCC725502B230029FAE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+			};
+			buildConfigurationList = 4105DCCA25502B230029FAE1 /* Build configuration list for PBXProject "beacon_simulation" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4105DCC625502B230029FAE1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		4105DCCB25502B230029FAE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4105DCCC25502B230029FAE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4105DCCA25502B230029FAE1 /* Build configuration list for PBXProject "beacon_simulation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4105DCCB25502B230029FAE1 /* Debug */,
+				4105DCCC25502B230029FAE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4105DCC725502B230029FAE1 /* Project object */;
+}
