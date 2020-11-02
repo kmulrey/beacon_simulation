@@ -2,13 +2,13 @@
 #include "G4RunManager.hh"
 #include "G4UImanager.hh"
 
-#include "LORADetectorConstruction.hh"
-#include "LORAPhysicsList.hh"
-#include "LORAPrimaryGeneratorAction.hh"
+#include "BEACONDetectorConstruction.hh"
+#include "BEACONPhysicsList.hh"
+#include "BEACONPrimaryGeneratorAction.hh"
 
-#include "LORARunAction.hh"
-#include "LORAEventAction.hh"
-#include "LORASteppingAction.hh"
+#include "BEACONRunAction.hh"
+#include "BEACONEventAction.hh"
+#include "BEACONSteppingAction.hh"
 
 #include <iostream>
 #include <fstream>
@@ -24,31 +24,28 @@ int main(int argc,char** argv)
    
    // set mandatory initialization classes
    //
-   LORADetectorConstruction* detector = new LORADetectorConstruction;
+   BEACONDetectorConstruction* detector = new BEACONDetectorConstruction;
    runManager->SetUserInitialization(detector);
    //
-   G4VUserPhysicsList* physics = new LORAPhysicsList;
+   G4VUserPhysicsList* physics = new BEACONPhysicsList;
    runManager->SetUserInitialization(physics);
 	
    // set mandatory user action class
    //
-   cout << "1" << endl;
-   //LORAPrimaryGeneratorAction* gen_action = new LORAPrimaryGeneratorAction(false, 4.0*GeV);
-   LORAPrimaryGeneratorAction* gen_action = new LORAPrimaryGeneratorAction();
-   //LORAPrimaryGeneratorAction* gen_action;
+  
+   BEACONPrimaryGeneratorAction* gen_action = new BEACONPrimaryGeneratorAction();
 
-   cout << "2" << endl;
 
    runManager->SetUserAction(gen_action);
 	
 	// set user action classes
-	LORARunAction*   run;
-	LORAEventAction* event;
+	BEACONRunAction*   run;
+	BEACONEventAction* event;
 	
-	runManager->SetUserAction(run = new LORARunAction(detector,gen_action)); 
-	runManager->SetUserAction(event = new LORAEventAction());
+	runManager->SetUserAction(run = new BEACONRunAction(detector,gen_action));
+	runManager->SetUserAction(event = new BEACONEventAction());
 	//runManager->SetUserAction(new VGCTrackingAction(gen_action,run,histo));
-	runManager->SetUserAction(new LORASteppingAction(run, event));
+	runManager->SetUserAction(new BEACONSteppingAction(run, event));
    
    // Initialize G4 kernel
    //

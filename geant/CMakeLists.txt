@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------
 # Setup the project
 cmake_minimum_required(VERSION 2.6 FATAL_ERROR)
-project(LORA)
-# cmake -DGeant4_DIR=/Users/kmulrey/geant4/geant4.10.2-install/ /Users/kmulrey/LOFAR/scintillator_calibration/LORAphotons/
+project(BEACON)
+# cmake -DGeant4_DIR= /vol/optcoma/geant .
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
 # You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
@@ -31,9 +31,9 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #----------------------------------------------------------------------------
 # Add the executable, and link it to the Geant4 libraries
 #
-add_executable(LORA_simulation LORA_simulation.cc ${sources} ${headers})
+add_executable(BEACON_simulation BEACON_simulation.cc ${sources} ${headers})
 
-target_link_libraries(LORA_simulation ${Geant4_LIBRARIES} )
+target_link_libraries(BEACON_simulation ${Geant4_LIBRARIES} )
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -47,5 +47,5 @@ target_link_libraries(LORA_simulation ${Geant4_LIBRARIES} )
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
-install(TARGETS LORA_simulation DESTINATION bin)
+install(TARGETS BEACON_simulation DESTINATION bin)
 
