@@ -51,7 +51,7 @@ int main(int argc,char** argv)
     
    cout << "2" << endl;
 
-    /*
+    
     // set user action classes
 	LORARunAction*   run;
 	LORAEventAction* event;
@@ -70,8 +70,8 @@ int main(int argc,char** argv)
     cout<<"before initialization"<<endl;
    runManager->Initialize();
     
-*/
-   /*
+
+   
    // Get the pointer to the UI manager and set verbosities
    //
    G4UImanager* UI = G4UImanager::GetUIpointer();
@@ -81,8 +81,7 @@ int main(int argc,char** argv)
 	UI->ApplyCommand("/event/verbose 0"); 
 	UI->ApplyCommand("/tracking/verbose 0");
    UI->ApplyCommand("/process/verbose 0");
-   */
-    /*
+ 
 	if (argc==3)   // batch mode  
    {
       char* inFile = argv[1];
@@ -174,7 +173,7 @@ int main(int argc,char** argv)
       }
 
    }
-     */
+     
  
     delete runManager;
     cout<<"return"<<endl;
