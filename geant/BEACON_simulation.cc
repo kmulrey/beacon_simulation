@@ -125,11 +125,16 @@ int main(int argc,char** argv)
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
        cout <<outFile<<endl;
 
-       
+       char cstr[inFile.size()+1];
+       inFile.copy(cstr,inFile.size()+1);
        
       
       string line;
-      ifstream myfile(inFile);
+      //ifstream myfile(inFile);
+      ifstream myfile(cstr);
+
+       
+       
        
       //double penergy, zenith, azimuth;
       if (myfile.is_open())
