@@ -49,6 +49,6 @@ outfile.write('#! /bin/bash\n')
 for e in np.arange(len(energy)):
     for z in np.arange(len(zenith)):
         for a in np.arange(len(azimuth)):
-            outfile.write('sbatch run_zhaires_'+str(energy)+'_'+str(zenith)+'_'+str(azimuth)+'.q')
+            outfile.write('sbatch run_zhaires_'+str(energy)+'_'+str(zenith)+'_'+str(azimuth)+'.q\n')
 
 outfile.close()
