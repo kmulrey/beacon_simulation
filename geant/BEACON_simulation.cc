@@ -46,6 +46,7 @@ int main(int argc,char** argv)
    runManager->SetUserAction(gen_action);
 	
 	// set user action classes
+    /*
 	BEACONRunAction*   run;
 	BEACONEventAction* event;
 	
@@ -67,7 +68,7 @@ int main(int argc,char** argv)
 	UI->ApplyCommand("/event/verbose 0"); 
 	UI->ApplyCommand("/tracking/verbose 0");
    UI->ApplyCommand("/process/verbose 0");
-   
+   */
 	if (argc==4)   // batch mode
    {
        
