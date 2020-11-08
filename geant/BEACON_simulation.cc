@@ -127,7 +127,7 @@ int main(int argc,char** argv)
 
        
        
-      /*
+      
       string line;
       ifstream myfile(inFile);
        
@@ -234,7 +234,7 @@ int main(int argc,char** argv)
          }
          myfile.close();
       }
-       */
+       
    }
    
     else{
