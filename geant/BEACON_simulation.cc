@@ -233,7 +233,7 @@ int main(int argc,char** argv)
         cout<<"Pease enter [log10(energy)] [zenith]  [azimuth]"<<endl;
     }
 
-   delete runManager;
+   //delete runManager;
    
    return 0;
 }
