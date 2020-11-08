@@ -163,10 +163,10 @@ int main(int argc,char** argv)
             DepositedEnergyMuons[i]=0;
             DepositedEnergyHadrons[i]=0;
          }
-         //while ( getline (myfile,line) )
-         for (int i=0; i<10000; i++)
+         while ( getline (myfile,line) )
+         //for (int i=0; i<10000; i++)
          {
-            getline (myfile,line);
+            //getline (myfile,line);
             istringstream iss(line);
             //int cors_id, id;
             //double px, py, pz, x, y, t, w;
