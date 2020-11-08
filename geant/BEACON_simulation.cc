@@ -1,7 +1,7 @@
 
 #include "G4RunManager.hh"
 #include "G4UImanager.hh"
-/*
+
 #include "BEACONDetectorConstruction.hh"
 #include "BEACONPhysicsList.hh"
 #include "BEACONPrimaryGeneratorAction.hh"
@@ -9,7 +9,7 @@
 #include "BEACONRunAction.hh"
 #include "BEACONEventAction.hh"
 #include "BEACONSteppingAction.hh"
-*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
