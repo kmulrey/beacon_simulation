@@ -8,12 +8,14 @@
 
 /* Begin PBXFileReference section */
 		4105DCCD25502CC00029FAE1 /* geant */ = {isa = PBXFileReference; lastKnownFileType = folder; path = geant; sourceTree = "<group>"; };
+		41D9128A25587768003F5D30 /* make_jobs.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = make_jobs.py; path = geant/make_jobs.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		4105DCC625502B230029FAE1 = {
 			isa = PBXGroup;
 			children = (
+				41D9128A25587768003F5D30 /* make_jobs.py */,
 				4105DCCD25502CC00029FAE1 /* geant */,
 			);
 			sourceTree = "<group>";

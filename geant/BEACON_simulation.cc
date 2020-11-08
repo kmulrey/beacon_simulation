@@ -118,18 +118,14 @@ int main(int argc,char** argv)
        
        
        
-       string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/beacon_sims/" );
+       string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/zhaires_sims/" );
        string outdir("/vol/astro7/lofar/kmulrey/sim/beacon/results/");
        string inFile=dir + "footprint_" + en+"_" + zen+"_" + az + ".grdpcles.txt";
        cout <<inFile<<endl;
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
        cout <<outFile<<endl;
 
-       char cstr[inFile.size()];
-       inFile.copy(cstr,inFile.size());
-       char cstr_out[outFile.size()+1];
-       outFile.copy(cstr_out,inFile.size()+1);
-       cout<<"test:  "<<cstr<<endl;
+       
       
       string line;
       ifstream myfile(inFile.c_str());
