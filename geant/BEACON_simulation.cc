@@ -31,6 +31,8 @@ int main(int argc,char** argv)
    
    // set mandatory initialization classes
    //
+    
+     /*
    BEACONDetectorConstruction* detector = new BEACONDetectorConstruction;
    runManager->SetUserInitialization(detector);
    //
@@ -46,7 +48,7 @@ int main(int argc,char** argv)
    runManager->SetUserAction(gen_action);
 	
 	// set user action classes
-    /*
+   
 	BEACONRunAction*   run;
 	BEACONEventAction* event;
 	
