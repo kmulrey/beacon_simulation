@@ -149,12 +149,12 @@ int main(int argc,char** argv)
          
          const int nobins=200;
          
-         double TotalArea[nobins];
-         double DepositedEnergyTotal[nobins];
-         double DepositedEnergyGamma[nobins];
-         double DepositedEnergyElecPosi[nobins];
-         double DepositedEnergyMuons[nobins];
-         double DepositedEnergyHadrons[nobins];
+          double TotalArea[nobins]={0};
+         double DepositedEnergyTotal[nobins]={0};
+         double DepositedEnergyGamma[nobins]={0};
+         double DepositedEnergyElecPosi[nobins]={0};
+         double DepositedEnergyMuons[nobins]={0};
+         double DepositedEnergyHadrons[nobins]={0};
          for (int i=0; i<nobins; i++) {
             TotalArea[i]=25*3.14159265*((i+1)*(i+1)-i*i); //m^2
             DepositedEnergyTotal[i]=0;
