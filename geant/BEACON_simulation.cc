@@ -32,9 +32,10 @@ int main(int argc,char** argv)
    // set mandatory initialization classes
    //
     
-     /*
+    
    BEACONDetectorConstruction* detector = new BEACONDetectorConstruction;
    runManager->SetUserInitialization(detector);
+    /*
    //
    G4VUserPhysicsList* physics = new BEACONPhysicsList;
    runManager->SetUserInitialization(physics);
