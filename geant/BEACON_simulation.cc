@@ -125,8 +125,8 @@ int main(int argc,char** argv)
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
        cout <<outFile<<endl;
 
-       char cstr[inFile.size()+1];
-       inFile.copy(cstr,inFile.size()+1);
+       char cstr[inFile.size()];
+       inFile.copy(cstr,inFile.size());
        char cstr_out[outFile.size()+1];
        outFile.copy(cstr_out,inFile.size()+1);
       
