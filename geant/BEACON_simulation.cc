@@ -1,7 +1,7 @@
 
 #include "G4RunManager.hh"
 #include "G4UImanager.hh"
-
+/*
 #include "BEACONDetectorConstruction.hh"
 #include "BEACONPhysicsList.hh"
 #include "BEACONPrimaryGeneratorAction.hh"
@@ -9,7 +9,7 @@
 #include "BEACONRunAction.hh"
 #include "BEACONEventAction.hh"
 #include "BEACONSteppingAction.hh"
-
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -24,7 +24,7 @@ using namespace std;
 int main(int argc,char** argv)
 {
    // Construct the default run manager
-   //
+   //s
     
     /*
    G4RunManager* runManager = new G4RunManager;
