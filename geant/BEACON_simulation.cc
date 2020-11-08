@@ -35,11 +35,11 @@ int main(int argc,char** argv)
     
    BEACONDetectorConstruction* detector = new BEACONDetectorConstruction;
    runManager->SetUserInitialization(detector);
-    /*
+  
    //
    G4VUserPhysicsList* physics = new BEACONPhysicsList;
    runManager->SetUserInitialization(physics);
-	
+	  /*
    // set mandatory user action class
    //
   
