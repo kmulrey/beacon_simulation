@@ -25,6 +25,8 @@ int main(int argc,char** argv)
 {
    // Construct the default run manager
    //
+    
+    /*
    G4RunManager* runManager = new G4RunManager;
    
    // set mandatory initialization classes
@@ -65,7 +67,7 @@ int main(int argc,char** argv)
 	UI->ApplyCommand("/event/verbose 0"); 
 	UI->ApplyCommand("/tracking/verbose 0");
    UI->ApplyCommand("/process/verbose 0");
-   
+   */
 	if (argc==4)   // batch mode
    {
       char* E = argv[1];
