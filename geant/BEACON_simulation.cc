@@ -232,10 +232,11 @@ int main(int argc,char** argv)
       }
        */
    }
+    /*
     else{
         cout<<"Pease enter [log10(energy)] [zenith]  [azimuth]"<<endl;
     }
-
+*/
    //delete runManager;
    
    return 0;
