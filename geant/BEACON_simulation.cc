@@ -173,8 +173,8 @@ int main(int argc,char** argv)
             //iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
              double id, penergy, rad, polar, Ux, Uy, Uz,x,y;
             iss >> id >> penergy >> rad >> polar >> Ux >> Uy >> Uz;
-             x=rad*cos(polar);
-             y=rad*sin(polar);
+             x=pow(10,rad)*cos(polar);
+             y=pow(10,rad)*sin(polar);
              double w=1;
              double energy = pow(10,penergy);// penergy*GeV;
                            //double part_zen= -1*((3.14159/180)*prim_zenith-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz)));
@@ -205,7 +205,7 @@ int main(int argc,char** argv)
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
-               //G4cout << "Deposit: " << Deposit/w << " (weight=" << w << ")" << G4endl;
+               G4cout << "Deposit: " << Deposit<< G4endl;
                DepositedEnergyTotal[DistBin]+=Deposit;
                   if (id==1) { DepositedEnergyGamma[DistBin]+=Deposit; }
                   else if (id==2 || id==3) { DepositedEnergyElecPosi[DistBin]+=Deposit; }
