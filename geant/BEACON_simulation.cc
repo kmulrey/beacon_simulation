@@ -61,24 +61,55 @@ int main(int argc,char** argv)
 	UI->ApplyCommand("/tracking/verbose 0");
    UI->ApplyCommand("/process/verbose 0");
    
-	if (argc==3)   // batch mode  
+	if (argc==4)   // batch mode
    {
-      char* inFile = argv[1];
-      char* outFile = argv[2];
+      char* E = argv[1];
+      char* Z = argv[2];
+      char* A = argv[3];
+
+       string az;
+       string zen;
+       string en;
+       
+       stringstream ss;
+       ss<<A;
+       ss>>az;
+       ss.clear();
+
+       ss<<Z;
+       ss>>zen;
+       ss.clear();
+
+       ss<<E;
+       ss>>en;
+       
+       float prim_energy=stof(en);
+       float prim_zenith=stof(zen);
+       float prim_azimuth=stof(az);
+       string dir( "/Users/kmulrey/Beacon/opened_files/" );
+       string outdir("results/");
+       string inFile=dir + "footprint_" + en+"_" + zen+"_" + az + ".grdpcles.txt";
+       cout <<inFile<<endl;
+       string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
+       cout <<outFile<<endl;
+
       
-      G4String line;
+      string line;
       ifstream myfile(inFile);
-      double penergy, zenith, azimuth;
+       
+      //double penergy, zenith, azimuth;
       if (myfile.is_open())
       {
-         getline (myfile,line);
-         istringstream iss(line);
-         int evtno, pid;
+         getline (myfile,line); //header
+         getline (myfile,line); //header
+
+         //istringstream iss(line);
+         //int evtno, pid;
          
-         iss >> evtno >> pid >> penergy >> zenith >> azimuth;
+         //iss >> evtno >> pid >> penergy >> zenith >> azimuth;
          
-         double shower_axis_x = sin(zenith)*cos(azimuth);
-         double shower_axis_y = sin(zenith)*sin(azimuth);
+         double shower_axis_x = sin(prim_zenith)*cos(prim_azimuth);
+         double shower_axis_y = sin(prim_zenith)*sin(prim_azimuth);
          
          const int nobins=200;
          
@@ -101,15 +132,24 @@ int main(int argc,char** argv)
          {
             //getline (myfile,line);
             istringstream iss(line);
-            int cors_id, id;
-            double px, py, pz, x, y, t, w;
-            iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
+            //int cors_id, id;
+            //double px, py, pz, x, y, t, w;
+            //iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
+             double pcode, penergy, rad, polar, Ux, Uy, Uz,x,y;
+            iss >> pcode >> penergy >> rad >> polar >> Ux >> Uy >> Uz;
+             x=rad*cos(polar);
+             y=rad*sin(polar);
+             double energy = pow(10,penergy);// penergy*GeV;
+                           //double part_zen= -1*((3.14159/180)*prim_zenith-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz)));
+                           // double part_az=(3.14159/180)*prim_azimuth-atan(Uy/Uz);
+             double part_zen=3.14159-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz));
+             double part_az=atan(Uy/Ux);
             
             double R2 = x*x+y*y;
             double inner = x*shower_axis_x + y*shower_axis_y;
             double AxisDist = sqrt(R2-inner*inner);
             int DistBin = AxisDist/500; // bin 0 = 0-5 m, bin 1 = 5-10m, etc.
-            double energy = sqrt(px*px+py*py+pz*pz)*GeV;
+            //double energy = sqrt(px*px+py*py+pz*pz)*GeV;
             
             G4String nextParticle="ignore";
             if (id==1) {nextParticle="gamma";}
@@ -149,7 +189,7 @@ int main(int argc,char** argv)
             // the area correction factor is right.
             // The comparison is with LORA MeV in detector, however...
              
-            myfile << i << "     " << 2.25*cos(zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
+            myfile << i << "     " << 2.25*cos(part_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
                << "   " << int(100.*DepositedEnergyElecPosi[i]/DepositedEnergyTotal[i]) 
                << "   " << int(100.*DepositedEnergyMuons[i]/DepositedEnergyTotal[i])
             << "   " << int(100.*DepositedEnergyHadrons[i]/DepositedEnergyTotal[i]) << endl;
