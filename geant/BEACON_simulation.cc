@@ -39,7 +39,7 @@ int main(int argc,char** argv)
    //
    G4VUserPhysicsList* physics = new BEACONPhysicsList;
    runManager->SetUserInitialization(physics);
-	  /*
+	
    // set mandatory user action class
    //
   
@@ -47,7 +47,7 @@ int main(int argc,char** argv)
 
 
    runManager->SetUserAction(gen_action);
-	
+	  /*
 	// set user action classes
    
 	BEACONRunAction*   run;
