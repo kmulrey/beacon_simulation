@@ -127,7 +127,8 @@ int main(int argc,char** argv)
 
        char cstr[inFile.size()+1];
        inFile.copy(cstr,inFile.size()+1);
-       
+       char cstr_out[outFile.size()+1];
+       outFile.copy(cstr_out,inFile.size()+1);
       
       string line;
       //ifstream myfile(inFile);
@@ -218,8 +219,9 @@ int main(int argc,char** argv)
          }
          myfile.close();
          //cout << "Bin   Total (Gev)  Gamma(%)   ElecPosi(%) Muons(%) Hadrons(%)" << endl;
-         ofstream myfile(outFile);
-         
+         //ofstream myfile(outFile);
+         ofstream myfile(cstr_out);
+
          for (int i=0; i<nobins; i++) {
             //We put all particles in a distance ring into an area of 2.25 m^2
             //Correct particle density is achieved by applying a factor 2.25/A_ellipse
