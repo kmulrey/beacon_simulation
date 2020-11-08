@@ -242,6 +242,9 @@ int main(int argc,char** argv)
          }
          myfile.close();
       }
+      else{
+          cout<<"can't open file"<<endl;
+      }
        
    }
    
