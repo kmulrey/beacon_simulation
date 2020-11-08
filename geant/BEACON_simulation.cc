@@ -85,9 +85,9 @@ int main(int argc,char** argv)
        ss<<E;
        ss>>en;
        
-       float prim_energy=stof(en);
-       float prim_zenith=stof(zen);
-       float prim_azimuth=stof(az);
+       float prim_energy=atof(en);
+       float prim_zenith=atof(zen);
+       float prim_azimuth=atof(az);
        string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/beacon_sims/" );
        string outdir("/vol/astro7/lofar/kmulrey/sim/beacon/results/");
        string inFile=dir + "footprint_" + en+"_" + zen+"_" + az + ".grdpcles.txt";
