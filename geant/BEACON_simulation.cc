@@ -238,6 +238,8 @@ int main(int argc,char** argv)
             << "   " << int(100.*DepositedEnergyHadrons[i]/DepositedEnergyTotal[i]) << endl;
          
          }
+          
+          
          myfile.close();
       }
       else{
