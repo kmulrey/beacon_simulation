@@ -86,8 +86,8 @@ int main(int argc,char** argv)
        float prim_energy=stof(en);
        float prim_zenith=stof(zen);
        float prim_azimuth=stof(az);
-       string dir( "/Users/kmulrey/Beacon/opened_files/" );
-       string outdir("results/");
+       string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/beacon_sims/" );
+       string outdir("/vol/astro7/lofar/kmulrey/sim/beacon/results/");
        string inFile=dir + "footprint_" + en+"_" + zen+"_" + az + ".grdpcles.txt";
        cout <<inFile<<endl;
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
@@ -163,7 +163,9 @@ int main(int argc,char** argv)
             if (nextParticle!="ignore" && DistBin<nobins) {
                //cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
-               gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
+               //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
+               gen_action->SetNewParticle(nextParticle,part_zen,part_az,energy);
+
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
                //G4cout << "Deposit: " << Deposit/w << " (weight=" << w << ")" << G4endl;
