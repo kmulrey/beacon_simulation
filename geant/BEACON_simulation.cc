@@ -113,10 +113,8 @@ int main(int argc,char** argv)
        ss.clear();
        
        
-       
-       
-       
-       
+    
+    
        
        string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/zhaires_sims/" );
        string outdir("/vol/astro7/lofar/kmulrey/sim/beacon/results/");
