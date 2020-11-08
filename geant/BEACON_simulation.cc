@@ -149,7 +149,7 @@ int main(int argc,char** argv)
          
          const int nobins=200;
          
-          double TotalArea[nobins]={0};
+         double TotalArea[nobins]={0};
          double DepositedEnergyTotal[nobins]={0};
          double DepositedEnergyGamma[nobins]={0};
          double DepositedEnergyElecPosi[nobins]={0};
