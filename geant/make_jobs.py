@@ -19,7 +19,7 @@ def write_file(energy, zenith, azimuth):
     outfile.write('#SBATCH --time=2-00:00:00\n')
     
     outfile.write('use geant\n')
-    outfile.write('G4WORKDIR={0}/beacon_simulation/geant/\n')
+    outfile.write('G4WORKDIR={0}/beacon_simulation/geant/\n'.format(base_dir))
     outfile.write('. /vol/optcoma/geant4_9.6_install/share/Geant4-9.6.4/geant4make/geant4make.sh\n')
     outfile.write('cd {0}/beacon_simulation/geant/\n'.format(base_dir))
     outfile.write('./BEACON_simulation {0} {1} {2}\n'.format(str(energy),str(zenith), str(azimuth)))
