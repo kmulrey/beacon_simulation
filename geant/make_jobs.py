@@ -35,7 +35,7 @@ for e in np.arange(len(energy)):
     for z in np.arange(len(zenith)):
         for a in np.arange(len(azimuth)):
 
-            write_file('10000',0, zenith[0], energy[0], seed+1,'proton')
+            write_file( energy[e],zenith[z],azimuth[a])
 
 
 
