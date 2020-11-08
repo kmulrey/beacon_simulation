@@ -163,10 +163,10 @@ int main(int argc,char** argv)
             DepositedEnergyMuons[i]=0;
             DepositedEnergyHadrons[i]=0;
          }
-         while ( getline (myfile,line) )
-         //for (int i=0; i<1000; i++)
+         //while ( getline (myfile,line) )
+         for (int i=0; i<100; i++)
          {
-            //getline (myfile,line);
+            getline (myfile,line);
             istringstream iss(line);
             //int cors_id, id;
             //double px, py, pz, x, y, t, w;
@@ -198,7 +198,7 @@ int main(int argc,char** argv)
             if (id==14) {nextParticle="proton";}
             
             if (nextParticle!="ignore" && DistBin<nobins) {
-               //cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
+               cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
                //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
                gen_action->SetNewParticle(nextParticle,part_zen,part_az,energy);
