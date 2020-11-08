@@ -137,10 +137,11 @@ int main(int argc,char** argv)
             //int cors_id, id;
             //double px, py, pz, x, y, t, w;
             //iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
-             double pcode, penergy, rad, polar, Ux, Uy, Uz,x,y;
-            iss >> pcode >> penergy >> rad >> polar >> Ux >> Uy >> Uz;
+             double id, penergy, rad, polar, Ux, Uy, Uz,x,y;
+            iss >> id >> penergy >> rad >> polar >> Ux >> Uy >> Uz;
              x=rad*cos(polar);
              y=rad*sin(polar);
+             double w=1;
              double energy = pow(10,penergy);// penergy*GeV;
                            //double part_zen= -1*((3.14159/180)*prim_zenith-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz)));
                            // double part_az=(3.14159/180)*prim_azimuth-atan(Uy/Uz);
