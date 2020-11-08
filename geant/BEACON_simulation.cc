@@ -129,10 +129,11 @@ int main(int argc,char** argv)
        inFile.copy(cstr,inFile.size());
        char cstr_out[outFile.size()+1];
        outFile.copy(cstr_out,inFile.size()+1);
+       cout<<"test:  "<<cstr<<endl;
       
       string line;
-      //ifstream myfile(inFile);
-      ifstream myfile(cstr);
+      ifstream myfile(inFile.c_str());
+      //ifstream myfile(cstr);
 
        
        
@@ -220,8 +221,8 @@ int main(int argc,char** argv)
          }
          myfile.close();
          //cout << "Bin   Total (Gev)  Gamma(%)   ElecPosi(%) Muons(%) Hadrons(%)" << endl;
-         //ofstream myfile(outFile);
-         ofstream myfile(cstr_out);
+         ofstream myfile(outFile.c_str());
+         //ofstream myfile(cstr_out);
 
          for (int i=0; i<nobins; i++) {
             //We put all particles in a distance ring into an area of 2.25 m^2
