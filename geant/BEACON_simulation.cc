@@ -191,7 +191,7 @@ int main(int argc,char** argv)
             // the area correction factor is right.
             // The comparison is with LORA MeV in detector, however...
              
-            myfile << i << "     " << 2.25*cos(part_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
+            myfile << i << "     " << 2.25*cos(prim_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
                << "   " << int(100.*DepositedEnergyElecPosi[i]/DepositedEnergyTotal[i]) 
                << "   " << int(100.*DepositedEnergyMuons[i]/DepositedEnergyTotal[i])
             << "   " << int(100.*DepositedEnergyHadrons[i]/DepositedEnergyTotal[i]) << endl;
@@ -201,6 +201,9 @@ int main(int argc,char** argv)
       }
 
    }
+    else{
+        cout<<"Pease enter [log10(energy)] [zenith]  [azimuth]"<<endl;
+    }
 
    delete runManager;
    
