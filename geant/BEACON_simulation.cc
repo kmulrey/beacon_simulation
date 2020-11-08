@@ -140,6 +140,7 @@ int main(int argc,char** argv)
       //double penergy, zenith, azimuth;
       if (myfile.is_open())
       {
+          cout<<"running event"<<endl;
          getline (myfile,line); //header
          getline (myfile,line); //header
 
