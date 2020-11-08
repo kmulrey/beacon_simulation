@@ -118,7 +118,7 @@ int main(int argc,char** argv)
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
        cout <<outFile<<endl;
 
-      
+      /*
       string line;
       ifstream myfile(inFile);
        
@@ -225,7 +225,7 @@ int main(int argc,char** argv)
          }
          myfile.close();
       }
-
+       */
    }
     else{
         cout<<"Pease enter [log10(energy)] [zenith]  [azimuth]"<<endl;
