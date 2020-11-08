@@ -228,7 +228,7 @@ int main(int argc,char** argv)
             // or energy density in MeV / m^2 ? It seems MeV / m^2, I would say, as then
             // the area correction factor is right.
             // The comparison is with LORA MeV in detector, however...
-             cout<<i << "     " << AxisDist<<"  "<< 2.25*cos(prim_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
+             cout<<i << "    "<<DepositedEnergyElecPosi[i]<<"  "<< 2.25*cos(prim_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
                            << "   " << int(100.*DepositedEnergyElecPosi[i]/DepositedEnergyTotal[i])
                            << "   " << int(100.*DepositedEnergyMuons[i]/DepositedEnergyTotal[i])
                         << "   " << int(100.*DepositedEnergyHadrons[i]/DepositedEnergyTotal[i]) << endl;
