@@ -74,7 +74,7 @@ int main(int argc,char** argv)
       char* E = argv[1];
       char* Z = argv[2];
       char* A = argv[3];
-       /*
+       
        string az;
        string zen;
        string en;
@@ -120,7 +120,7 @@ int main(int argc,char** argv)
        cout <<inFile<<endl;
        string outFile=outdir + "deposit_" + en+"_" + zen+"_" + az + ".txt";
        cout <<outFile<<endl;
-*/
+
        
        
       /*
@@ -232,11 +232,11 @@ int main(int argc,char** argv)
       }
        */
    }
-    /*
+   
     else{
         cout<<"Pease enter [log10(energy)] [zenith]  [azimuth]"<<endl;
     }
-*/
+
    //delete runManager;
    
    return 0;
