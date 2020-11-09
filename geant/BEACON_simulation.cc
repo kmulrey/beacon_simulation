@@ -173,8 +173,8 @@ int main(int argc,char** argv)
             //iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
              double id, penergy, rad, polar, Ux, Uy, Uz,x,y;
             iss >> id >> penergy >> rad >> polar >> Ux >> Uy >> Uz;
-             x=pow(10,rad)*cos(polar);
-             y=pow(10,rad)*sin(polar);
+             x=100*pow(10,rad)*cos(polar);
+             y=100*pow(10,rad)*sin(polar);
              double w=1;
              double energy = pow(10,penergy);// penergy*GeV;
                            //double part_zen= -1*((3.14159/180)*prim_zenith-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz)));
@@ -187,7 +187,7 @@ int main(int argc,char** argv)
             double AxisDist = sqrt(R2-inner*inner);
             int DistBin = AxisDist/500; // bin 0 = 0-5 m, bin 1 = 5-10m, etc.
             //double energy = sqrt(px*px+py*py+pz*pz)*GeV;
-            cout<<id<<"  "<<energy*pow(10,3)<<"  "<<x<<"  "<< y<<"   "<<DistBin<<"  "<<(180/3.14159)*part_zen<<"  "<<prim_zenith<<"  "<<(180/3.14159)*part_az<<"  "<<prim_azimuth<<endl;
+            cout<<id<<"  "<<energy*pow(10,3)<<"  "<<x<<"  "<< y<<"   "<<DistBin<<"  "<<prim_zenith<<"  "<<prim_azimuth<<endl;
             G4String nextParticle="ignore";
             if (id==1) {nextParticle="gamma";}
             if (id==2) {nextParticle="e+";}
@@ -201,7 +201,7 @@ int main(int argc,char** argv)
                cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
                //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
-               gen_action->SetNewParticle(nextParticle,part_zen,part_az,energy);
+               gen_action->SetNewParticle(nextParticle,prim_zen,prim_az,energy);
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
