@@ -206,7 +206,7 @@ int main(int argc,char** argv)
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
-               G4cout << "Deposit: " << Deposit<< G4endl;
+               //G4cout << "Deposit: " << Deposit<< G4endl;
                DepositedEnergyTotal[DistBin]+=Deposit;
                   if (id==1) { DepositedEnergyGamma[DistBin]+=Deposit; }
                   else if (id==2 || id==3) { DepositedEnergyElecPosi[DistBin]+=Deposit; }
