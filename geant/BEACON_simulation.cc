@@ -231,7 +231,7 @@ int main(int argc,char** argv)
             // The comparison is with LORA MeV in detector, however...
              
              
-             if (DepositedEnergyTotal[i]>0){:
+             if (DepositedEnergyTotal[i]>0){
             myfile << i << "     " << 2.25*cos(prim_zenith)*DepositedEnergyTotal[i]/TotalArea[i] << "    " << int(100.*DepositedEnergyGamma[i]/DepositedEnergyTotal[i])
                << "   " << int(100.*DepositedEnergyElecPosi[i]/DepositedEnergyTotal[i]) 
                << "   " << int(100.*DepositedEnergyMuons[i]/DepositedEnergyTotal[i])
