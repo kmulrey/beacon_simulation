@@ -201,7 +201,7 @@ int main(int argc,char** argv)
                cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
                //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
-               gen_action->SetNewParticle(nextParticle,prim_zen,prim_az,energy);
+               gen_action->SetNewParticle(nextParticle,prim_zenith,prim_azimuth,energy);
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
