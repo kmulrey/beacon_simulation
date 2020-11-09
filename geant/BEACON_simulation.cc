@@ -163,10 +163,10 @@ int main(int argc,char** argv)
             DepositedEnergyMuons[i]=0;
             DepositedEnergyHadrons[i]=0;
          }
-         while ( getline (myfile,line) )
-         //for (int i=0; i<10000; i++)
+         //while ( getline (myfile,line) )
+         for (int i=0; i<1000; i++)
          {
-            //getline (myfile,line);
+            getline (myfile,line);
             istringstream iss(line);
             //int cors_id, id;
             //double px, py, pz, x, y, t, w;
@@ -187,7 +187,7 @@ int main(int argc,char** argv)
             double AxisDist = sqrt(R2-inner*inner);
             int DistBin = AxisDist/500; // bin 0 = 0-5 m, bin 1 = 5-10m, etc.
             //double energy = sqrt(px*px+py*py+pz*pz)*GeV;
-            
+            cout<<pcode<<"  "<<energy*pow(10,3)<<"  "<<x<<"  "<< y<<"   "<<DistBin<<"  "<<(180/3.14159)*part_zen<<"  "<<prim_zenith<<"  "<<(180/3.14159)*part_az<<"  "<<prim_azimuth<<endl;
             G4String nextParticle="ignore";
             if (id==1) {nextParticle="gamma";}
             if (id==2) {nextParticle="e+";}
