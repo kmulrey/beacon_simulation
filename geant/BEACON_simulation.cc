@@ -113,8 +113,9 @@ int main(int argc,char** argv)
        ss.clear();
        
        
-    
-    
+       prim_zenith=prim_zenith*(3.14159/180.0);
+       prim_azimuth=prim_azimuth*(3.14159/180.0);
+
        
        string dir( "/vol/astro7/lofar/kmulrey/sim/beacon/zhaires_sims/" );
        string outdir("/vol/astro7/lofar/kmulrey/sim/beacon/results/");
@@ -144,8 +145,8 @@ int main(int argc,char** argv)
          
          //iss >> evtno >> pid >> penergy >> zenith >> azimuth;
          
-         double shower_axis_x = sin((3.14159/180)*prim_zenith)*cos((3.14159/180)*prim_azimuth);
-         double shower_axis_y = sin((3.14159/180)*prim_zenith)*sin((3.14159/180)*prim_azimuth);
+         double shower_axis_x = sin(prim_zenith)*cos(prim_azimuth);
+         double shower_axis_y = sin(prim_zenith)*sin(prim_azimuth);
          
          const int nobins=200;
          
@@ -176,7 +177,7 @@ int main(int argc,char** argv)
              x=100*pow(10,rad)*cos(polar);
              y=100*pow(10,rad)*sin(polar);
              double w=1;
-             double energy = pow(10,penergy);// penergy*GeV;
+             double energy = pow(10,penergy)*GeV;;// penergy*GeV;
                            //double part_zen= -1*((3.14159/180)*prim_zenith-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz)));
                            // double part_az=(3.14159/180)*prim_azimuth-atan(Uy/Uz);
              double part_zen=3.14159-acos(Uz/sqrt(Ux*Ux+Uy*Uy+Uz*Uz));
@@ -201,7 +202,7 @@ int main(int argc,char** argv)
                cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
                //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
-               gen_action->SetNewParticle(nextParticle,(3.14159/180)*prim_zenith,(3.14159/180)*prim_azimuth,energy);
+               gen_action->SetNewParticle(nextParticle,prim_zenith,prim_azimuth,energy);
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
