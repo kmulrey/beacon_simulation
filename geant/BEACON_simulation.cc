@@ -144,8 +144,8 @@ int main(int argc,char** argv)
          
          //iss >> evtno >> pid >> penergy >> zenith >> azimuth;
          
-         double shower_axis_x = sin(prim_zenith)*cos(prim_azimuth);
-         double shower_axis_y = sin(prim_zenith)*sin(prim_azimuth);
+         double shower_axis_x = sin((3.14159/180)*prim_zenith)*cos((3.14159/180)*prim_azimuth);
+         double shower_axis_y = sin((3.14159/180)*prim_zenith)*sin((3.14159/180)*prim_azimuth);
          
          const int nobins=200;
          
@@ -201,7 +201,7 @@ int main(int argc,char** argv)
                cout << nextParticle << " at " << AxisDist/100. << " m (bin " << DistBin << "), " << energy << " GeV" << endl;
                // GeV BUG !!! : gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy*GeV);
                //gen_action->SetNewParticle(nextParticle,zenith,azimuth,energy);
-               gen_action->SetNewParticle(nextParticle,prim_zenith,prim_azimuth,energy);
+               gen_action->SetNewParticle(nextParticle,(3.14159/180)*prim_zenith,(3.14159/180)*prim_azimuth,energy);
 
                runManager->BeamOn(1); //this gives the particle a random position in an area of 2.25 m^2
                double Deposit = w*(event->GetEnergyDeposit());    // what is w ? Weight, from thinning? (AC)
