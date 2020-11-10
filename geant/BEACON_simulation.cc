@@ -174,7 +174,7 @@ int main(int argc,char** argv)
             //iss >> cors_id >> id >> px >> py >> pz >> x >> y >> t >> w;
              double id, penergy, rad, polar, Ux, Uy, Uz,x,y, w;
              iss >> id >> penergy >> rad >> polar >> Ux >> Uy >> Uz >> w;
-             cout<<w<<end;
+             //cout<<w<<end;
              x=100*pow(10,rad)*cos(polar);
              y=100*pow(10,rad)*sin(polar);
              double energy = pow(10,penergy)*GeV;;// penergy*GeV;
