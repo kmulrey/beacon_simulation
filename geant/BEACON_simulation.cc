@@ -113,7 +113,7 @@ int main(int argc,char** argv)
        ss.clear();
        
        
-       prim_zenith=prim_zenith*(3.14159/180.0);
+       prim_zenith=(prim_zenith-30.0)*(3.14159/180.0);
        prim_azimuth=prim_azimuth*(3.14159/180.0);
 
        
